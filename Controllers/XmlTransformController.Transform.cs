@@ -15,7 +15,7 @@ namespace xml_xslt_service
     public partial class XmlTransformController
     {
 
-        async Task<FileStreamResult> Transform(
+        async Task<ActionResult> Transform(
             Stream outputStream,
             string template)
         {
@@ -49,7 +49,7 @@ namespace xml_xslt_service
             );
         }
 
-        public async Task<FileStreamResult> Transform(
+        public async Task<ActionResult> Transform(
             string source,
             string template)
         {
@@ -58,7 +58,7 @@ namespace xml_xslt_service
 
         // POST api/values
         [HttpPost]
-        public Task<FileStreamResult> Post(
+        public Task<ActionResult> Post(
             [FromBody] string xml,
             [FromQuery] string template,
             [FromQuery] string type)

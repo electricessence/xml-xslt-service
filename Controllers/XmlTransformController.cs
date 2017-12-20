@@ -33,27 +33,8 @@ namespace xml_xslt_service
             if (templateInfo.Exists)
                 return Task.FromResult(templateInfo.CreateReadStream());
 
-            return new HttpClient().GetStreamAsync(pathOrUri);
-        }
-
-        protected void UseXmlReader(string pathOrUri, Action<XmlReader> handler)
-        {
-            var templateInfo = _env.WebRootFileProvider.GetFileInfo(pathOrUri);
-            if (templateInfo.Exists)
-            {
-                using (var stream = templateInfo.CreateReadStream())
-                using (var reader = XmlReader.Create(stream))
-                {
-                    handler(reader);
-                }
-            }
-            else
-            {
-                using (var reader = XmlReader.Create(pathOrUri))
-                {
-                    handler(reader);
-                }
-            }
+            return new HttpClient()
+				.GetStreamAsync(pathOrUri);
         }
 
         protected async Task UseXmlReader(string pathOrUri, Func<XmlReader, Task> handler)
@@ -72,26 +53,6 @@ namespace xml_xslt_service
                 using (var reader = XmlReader.Create(pathOrUri, new XmlReaderSettings{ Async = true }))
                 {
                     await handler(reader);
-                }
-            }
-        }
-
-        protected T UseXmlReader<T>(string pathOrUri, Func<XmlReader, T> handler)
-        {
-            var templateInfo = _env.WebRootFileProvider.GetFileInfo(pathOrUri);
-            if (templateInfo.Exists)
-            {
-                using (var stream = templateInfo.CreateReadStream())
-                using (var reader = XmlReader.Create(stream))
-                {
-                    return handler(reader);
-                }
-            }
-            else
-            {
-                using (var reader = XmlReader.Create(pathOrUri))
-                {
-                    return handler(reader);
                 }
             }
         }
@@ -128,7 +89,6 @@ namespace xml_xslt_service
                 return node.ToString();
 
             return null;
-
         }
     }
 }

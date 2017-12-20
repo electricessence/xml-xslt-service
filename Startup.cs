@@ -35,6 +35,7 @@ namespace xml_xslt_service
             }
 
             app.UseMvc();
+			app.UseStaticFiles();
         }
     }
 }
