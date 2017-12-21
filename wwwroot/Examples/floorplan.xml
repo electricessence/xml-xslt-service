@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="floorplan.xsl" ?>
+
+<floorplan>
+
+	<wall x="10" y="1" t="6" w="20" h="10"/>
+
+	<wall x="100" y="10" t="6" w="20" h="10"/>
+
+	<wall x="140" y="20" t="6" w="20" h="10" r="60"/>
+
+</floorplan>
