@@ -18,6 +18,11 @@
 				<div class="container">
 					<div class="meta-display">
 						<h1>Floorplan</h1>
+						<label>
+							<input type="checkbox" id="flipEnabled"/>
+							<span>Flipped</span>
+						</label>
+
 						<h2 id="room_title"></h2>
 						<p id="room_desc"></p>
 					</div>

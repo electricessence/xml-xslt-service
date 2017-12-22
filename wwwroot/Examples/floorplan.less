@@ -35,24 +35,43 @@ html, body, svg, .container {
   padding:1em;
   svg {
 
+    //noinspection SpellCheckingInspection
+    .flipped & {
+      transform: scale(-1, 1);
+    }
+
     g
     {
       pointer-events: none;
     }
 
-    g[inkscape|label="Labels"] {
+    g[inkscape|label="Labels"]{
       display: none !important;
 
       .labels & {
         display: inline !important;
       }
+
+      .labels.flipped & {
+        display: none !important;
+      }
     }
 
+    g[inkscape|label="Labels Reversed"] {
+      display: none !important;
+
+      .labels.flipped & {
+        display: inline !important;
+      }
+    }
+
+
     g[inkscape|label="Rooms"] {
-      rect {
+      * {
         visibility: hidden;
         pointer-events: all;
         cursor:pointer;
+        mix-blend-mode: multiply;
 
         &:hover
         {

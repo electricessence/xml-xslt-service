@@ -29,6 +29,9 @@ svg,
   background: #CFC;
   padding: 1em;
 }
+.flipped .floor-plan svg {
+  transform: scale(-1, 1);
+}
 .floor-plan svg g {
   pointer-events: none;
 }
@@ -38,11 +41,21 @@ svg,
 .labels .floor-plan svg g[inkscape|label="Labels"] {
   display: inline !important;
 }
-.floor-plan svg g[inkscape|label="Rooms"] rect {
+.labels.flipped .floor-plan svg g[inkscape|label="Labels"] {
+  display: none !important;
+}
+.floor-plan svg g[inkscape|label="Labels Reversed"] {
+  display: none !important;
+}
+.labels.flipped .floor-plan svg g[inkscape|label="Labels Reversed"] {
+  display: inline !important;
+}
+.floor-plan svg g[inkscape|label="Rooms"] * {
   visibility: hidden;
   pointer-events: all;
   cursor: pointer;
+  mix-blend-mode: multiply;
 }
-.floor-plan svg g[inkscape|label="Rooms"] rect:hover {
+.floor-plan svg g[inkscape|label="Rooms"] *:hover {
   visibility: visible;
 }

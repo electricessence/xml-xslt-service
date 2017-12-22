@@ -1,12 +1,20 @@
-requestAnimationFrame(callback => {
-	const labelsEnabled = <HTMLInputElement>document.getElementById("labelsEnabled");
+function bindCheckBoxToCssFlag(elementId:string, className:string)
+{
+	const checkbox = <HTMLInputElement>document.getElementById(elementId);
 
-	function updateLabelsEnabled() {
-		document.body.classList.toggle('labels', labelsEnabled.checked);
+	function update() {
+		document.body.classList.toggle(className, checkbox.checked);
 	}
 
-	updateLabelsEnabled();
-	labelsEnabled.onchange = updateLabelsEnabled;
+	update();
+	checkbox.onchange = update;
+}
+
+
+requestAnimationFrame(callback => {
+	bindCheckBoxToCssFlag('labelsEnabled', 'labels');
+	bindCheckBoxToCssFlag('flipEnabled', 'flipped');
+
 
 	const tags = {
 		title: document.getElementById("room_title"),
@@ -16,9 +24,9 @@ requestAnimationFrame(callback => {
 	nullRoom = new Room(null, tags);
 	selectedRoom = nullRoom;
 
-	const rooms = document.querySelectorAll("svg g[*|label=\"Rooms\"] rect");
+	const rooms = document.querySelectorAll("svg g[*|label=\"Rooms\"] *");
 	for (let i = 0; i < rooms.length; i++) {
-		new Room(<SVGRectElement>rooms[i], tags);
+		new Room(<SVGElement>rooms[i], tags);
 	}
 });
 
@@ -36,15 +44,23 @@ class Room {
 	}
 
 	constructor(
-		public readonly rect: SVGRectElement | null,
+		public readonly boundary: SVGElement | null,
 	    public tags: { title: HTMLElement, desc: HTMLElement })
 	{
-		this.title = rect && rect.getElementsByTagName("title")[0].innerHTML || "";
-		this.desc = rect && rect.getElementsByTagName("desc")[0].innerHTML || "";
+		const titleTag = boundary && boundary.getElementsByTagName("title")[0];
+		this.title = titleTag && titleTag.innerHTML || "";
 
-		if (rect) {
-			rect.onmouseover = () => this.setActive();
-			rect.onmouseout = () => {
+		const descTag = boundary && boundary.getElementsByTagName("desc")[0];
+		this.desc = descTag && descTag.innerHTML || "";
+
+		if (boundary) {
+
+			boundary.onclick =
+			boundary.onmouseover =
+				() => this.setActive();
+
+			boundary.onmouseout =
+				() => {
 				if(selectedRoom==this)
 					nullRoom.setActive();
 			};
