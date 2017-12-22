@@ -2,40 +2,42 @@
 
 <xsl:stylesheet
 		version="1.0"
-		xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-		xmlns="http://www.w3.org/2000/svg">
+		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 	<xsl:output
-			method="xml" indent="yes"
-			omit-xml-declaration="yes"
-			media-type="image/svg+xml"/>
+			method="html" indent="yes"
+			omit-xml-declaration="yes"/>
 
 	<xsl:template match="/">
-		<svg xmlns="http://www.w3.org/2000/svg">
-			<style>
-				.sample {
-					stroke:black;
-					fill:green;
-				}
-				.wall {
-					stroke:black;
-					fill:#DDD;
-				}
-			</style>
+		<html>
+			<head>
+				<link rel="stylesheet" type="text/css" href="floorplan.css"/>
+			</head>
+			<body>
 
-			<g>
-				<!-- walls -->
-				<xsl:apply-templates mode="walls" />
-			</g>
-		</svg>
-	</xsl:template>
+				<div class="container">
+					<div class="meta-display">
+						<h1>Floorplan</h1>
+						<h2 id="room_title"></h2>
+						<p id="room_desc"></p>
+					</div>
+					<div class="floor-plan">
+						<xsl:copy-of select="."/>
+					</div>
+				</div>
 
-	<xsl:template mode="walls" match="wall">
-		<rect class="wall" x="{@x}" y="{@y}" width="{@w}" height="{@t}">
-			<xsl:if test="@r">
-				<xsl:attribute name="transform">rotate(<xsl:value-of select="@r"/> 100 100)</xsl:attribute>
-			</xsl:if>
-		</rect>
+				<div class="controls">
+					<label>
+						<input type="checkbox" checked="checked" id="labelsEnabled"/>
+						<span>Labels</span>
+					</label>
+				</div>
+
+				<script src="floorplan.js"></script>
+			</body>
+
+		</html>
 	</xsl:template>
 
 </xsl:stylesheet>
+

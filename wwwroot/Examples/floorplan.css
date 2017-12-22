@@ -1,0 +1,48 @@
+@namespace inkscape 'http://www.inkscape.org/namespaces/inkscape';
+html {
+  font-family: Arial, sans-serif;
+}
+html,
+body,
+svg,
+.container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.controls {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+}
+.container .meta-display {
+  min-width: 30%;
+  padding: 1em;
+}
+.floor-plan {
+  background: #CFC;
+  padding: 1em;
+}
+.floor-plan svg g {
+  pointer-events: none;
+}
+.floor-plan svg g[inkscape|label="Labels"] {
+  display: none !important;
+}
+.labels .floor-plan svg g[inkscape|label="Labels"] {
+  display: inline !important;
+}
+.floor-plan svg g[inkscape|label="Rooms"] rect {
+  visibility: hidden;
+  pointer-events: all;
+  cursor: pointer;
+}
+.floor-plan svg g[inkscape|label="Rooms"] rect:hover {
+  visibility: visible;
+}
