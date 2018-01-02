@@ -34,6 +34,7 @@ html, body, svg, .container {
   width:100%;
   background: #CFC;
   padding:1em;
+
   svg {
 
     //noinspection SpellCheckingInspection
@@ -44,42 +45,48 @@ html, body, svg, .container {
     g
     {
       pointer-events: none;
-    }
 
-    g#labels { /* Shim this up using IDs for now */
-      display: none !important;
-
-      .labels & {
-        display: inline !important;
-      }
-
-      .labels.flipped & {
+      .label-layer
+      {
         display: none !important;
-      }
-    }
 
-    g#labelsReversed {
-      display: none !important;
-
-      .labels.flipped & {
-        display: inline !important;
-      }
-    }
-
-
-    g#rooms { /* Shim this up using IDs for now */
-      * {
-        visibility: hidden;
-        pointer-events: all;
-        cursor:pointer;
-        mix-blend-mode: multiply;
-
-        &:hover, &.hover
+        .labels &
         {
-          visibility: visible;
+          display: inline !important;
         }
       }
-    }
 
+      &#labels { /* Shim this up using IDs for now */
+        .labels.flipped & {
+          display: none !important;
+        }
+      }
+
+      &#labelsReversed {
+        .labels & {
+          display: none !important;
+        }
+
+        .labels.flipped & {
+          display: inline !important;
+        }
+      }
+
+
+      &#rooms { /* Shim this up using IDs for now */
+        * {
+          visibility: hidden;
+          pointer-events: all;
+          cursor:pointer;
+          mix-blend-mode: multiply;
+
+          &:hover, &.hover
+          {
+            visibility: visible;
+          }
+        }
+      }
+
+    }
   }
 }

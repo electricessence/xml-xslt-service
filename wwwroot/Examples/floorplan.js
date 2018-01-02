@@ -11,7 +11,7 @@ function bindCheckBoxToCssFlag(elementId, className) {
     update();
     checkbox.change(update);
 }
-requestAnimationFrame(function (callback) {
+requestAnimationFrame(function () {
     bindCheckBoxToCssFlag('labelsEnabled', 'labels');
     bindCheckBoxToCssFlag('flipEnabled', 'flipped');
     var tags = {

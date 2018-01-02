@@ -19,7 +19,7 @@ function bindCheckBoxToCssFlag(elementId:string, className:string)
 }
 
 
-requestAnimationFrame(callback => {
+requestAnimationFrame(() => {
 
 	bindCheckBoxToCssFlag('labelsEnabled', 'labels');
 	bindCheckBoxToCssFlag('flipEnabled', 'flipped');
