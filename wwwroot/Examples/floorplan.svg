@@ -306,7 +306,7 @@
          height="102.4"
          id="rect3085" /></g></g><g
      inkscape:groupmode="layer"
-     id="layer2"
+     id="backing"
      inkscape:label="Backing"
      style="display:inline"
      sodipodi:insensitive="true"><g
@@ -316,7 +316,7 @@
          points="60.1,395.2 47.1,395.2 47.1,332.9 60.1,332.9 60.1,293.3 177.7,293.3 177.7,282.2 427.2,282.2 427.2,292 539.6,292 539.6,11.3 605.8,11.3 605.8,1.6 792.9,1.6 792.9,7.5 847.5,7.5 847.5,1.6 1034.6,1.6 1034.6,4.2 1515.3,4.2 1515.3,316 1508.2,316 1508.2,703.2 1517.9,703.2 1517.9,775.9 1511.3,775.9 1511.3,1291.8 1598.5,1291.8 1598.5,1374.9 1515.3,1374.9 1515.3,2093.4 855.3,2093.4 855.3,2129.8 559.9,2129.8 559.9,2204.1 560.7,2235.2 559.9,2270.7 43.1,2270.7 43.1,1981.9 59.2,1981.9 59.2,1549 47.1,1549 47.1,1455.5 59.2,1455.5 59.2,885.1 47.1,885.1 47.1,729.2 58.2,729.2 58.2,670.7 47.1,670.7 47.1,608.3 60.1,608.3 "
          id="polygon2" /></g></g><g
      inkscape:groupmode="layer"
-     id="layer6"
+     id="floors"
      inkscape:label="Floors"
      sodipodi:insensitive="true"
      style="display:inline"><g
@@ -1863,7 +1863,7 @@
          y2="556.40002"
          id="line443" /></g></g><g
      inkscape:groupmode="layer"
-     id="layer5"
+     id="labelBacking"
      inkscape:label="Label Backing"
      class="label-layer"
      sodipodi:insensitive="true"><rect
@@ -1946,7 +1946,7 @@
        y="1360.9"
        x="234.2" /></g><g
      inkscape:groupmode="layer"
-     id="layer1"
+     id="rooms"
      inkscape:label="Rooms"
      style="display:inline;opacity:1"><rect
        style="opacity:1;vector-effect:none;fill:#ffeeaa;fill-opacity:1;stroke:none;stroke-width:16.77540207;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -2072,7 +2072,7 @@
          id="title3068">Garage</title><desc
          id="desc3070">Park the car here.</desc></rect></g><g
      inkscape:groupmode="layer"
-     id="layer4"
+     id="labels"
      inkscape:label="Labels"
      class="label-layer"
      sodipodi:insensitive="true"
@@ -4457,7 +4457,7 @@
          inkscape:connector-curvature="0"
          style="fill:#231f20" /></g></g><g
      inkscape:groupmode="layer"
-     id="layer7"
+     id="labelsReversed"
      inkscape:label="Labels Reversed"
      class="label-layer"
      sodipodi:insensitive="true"
@@ -6848,7 +6848,7 @@
          inkscape:connector-curvature="0"
          style="fill:#231f20" /></g></g><g
      inkscape:groupmode="layer"
-     id="layer3"
+     id="walls"
      inkscape:label="Walls"
      style="display:inline;opacity:1"
      sodipodi:insensitive="true"><g

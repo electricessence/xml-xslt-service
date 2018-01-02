@@ -12,6 +12,7 @@
 		<html>
 			<head>
 				<link rel="stylesheet" type="text/css" href="floorplan.css"/>
+				<script src="jquery/jquery-3.2.1.min.js"></script>
 			</head>
 			<body>
 

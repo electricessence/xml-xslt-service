@@ -26,6 +26,7 @@ svg,
   padding: 1em;
 }
 .floor-plan {
+  width: 100%;
   background: #CFC;
   padding: 1em;
 }
@@ -35,27 +36,32 @@ svg,
 .floor-plan svg g {
   pointer-events: none;
 }
-.floor-plan svg g[inkscape|label="Labels"] {
+.floor-plan svg g#labels {
+  /* Shim this up using IDs for now */
   display: none !important;
 }
-.labels .floor-plan svg g[inkscape|label="Labels"] {
+.labels .floor-plan svg g#labels {
   display: inline !important;
 }
-.labels.flipped .floor-plan svg g[inkscape|label="Labels"] {
+.labels.flipped .floor-plan svg g#labels {
   display: none !important;
 }
-.floor-plan svg g[inkscape|label="Labels Reversed"] {
+.floor-plan svg g#labelsReversed {
   display: none !important;
 }
-.labels.flipped .floor-plan svg g[inkscape|label="Labels Reversed"] {
+.labels.flipped .floor-plan svg g#labelsReversed {
   display: inline !important;
 }
-.floor-plan svg g[inkscape|label="Rooms"] * {
+.floor-plan svg g#rooms {
+  /* Shim this up using IDs for now */
+}
+.floor-plan svg g#rooms * {
   visibility: hidden;
   pointer-events: all;
   cursor: pointer;
   mix-blend-mode: multiply;
 }
-.floor-plan svg g[inkscape|label="Rooms"] *:hover {
+.floor-plan svg g#rooms *:hover,
+.floor-plan svg g#rooms *.hover {
   visibility: visible;
 }

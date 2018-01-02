@@ -31,6 +31,7 @@ html, body, svg, .container {
 }
 
 .floor-plan {
+  width:100%;
   background: #CFC;
   padding:1em;
   svg {
@@ -45,7 +46,7 @@ html, body, svg, .container {
       pointer-events: none;
     }
 
-    g[inkscape|label="Labels"]{
+    g#labels { /* Shim this up using IDs for now */
       display: none !important;
 
       .labels & {
@@ -57,7 +58,7 @@ html, body, svg, .container {
       }
     }
 
-    g[inkscape|label="Labels Reversed"] {
+    g#labelsReversed {
       display: none !important;
 
       .labels.flipped & {
@@ -66,14 +67,14 @@ html, body, svg, .container {
     }
 
 
-    g[inkscape|label="Rooms"] {
+    g#rooms { /* Shim this up using IDs for now */
       * {
         visibility: hidden;
         pointer-events: all;
         cursor:pointer;
         mix-blend-mode: multiply;
 
-        &:hover
+        &:hover, &.hover
         {
           visibility: visible;
         }

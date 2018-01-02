@@ -1,33 +1,41 @@
+/// <reference path="jquery/jquery.d.ts" />
+
+function $byID(id:string):JQuery
+{
+	return $('#'+id);
+}
+
 function bindCheckBoxToCssFlag(elementId:string, className:string)
 {
-	const checkbox = <HTMLInputElement>document.getElementById(elementId);
+	const body = $(document.body);
+	const checkbox = $byID(elementId);
 
 	function update() {
-		document.body.classList.toggle(className, checkbox.checked);
+		body.toggleClass(className,checkbox.prop('checked'));
 	}
 
 	update();
-	checkbox.onchange = update;
+	checkbox.change(update);
 }
 
 
 requestAnimationFrame(callback => {
+
 	bindCheckBoxToCssFlag('labelsEnabled', 'labels');
 	bindCheckBoxToCssFlag('flipEnabled', 'flipped');
 
-
 	const tags = {
-		title: document.getElementById("room_title"),
-		desc: document.getElementById("room_desc")
+		title: $byID('room_title'),
+		desc: $byID('room_desc')
 	};
 
 	nullRoom = new Room(null, tags);
 	selectedRoom = nullRoom;
 
-	const rooms = document.querySelectorAll("svg g[*|label=\"Rooms\"] *");
-	for (let i = 0; i < rooms.length; i++) {
-		new Room(<SVGElement>rooms[i], tags);
-	}
+	const rooms = $("svg g#rooms *");
+	rooms.each((i,e)=>{
+		new Room($(e), tags);
+	});
 });
 
 let nullRoom: Room | null = null;
@@ -38,33 +46,38 @@ class Room {
 	readonly desc: string;
 
 	setActive(): void {
-		this.tags.title.innerText = this.title;
-		this.tags.desc.innerHTML = this.desc;
+		this.tags.title.text(this.title);
+		this.tags.desc.text(this.desc);
 		selectedRoom = this;
 	}
 
 	constructor(
-		public readonly boundary: SVGElement | null,
-	    public tags: { title: HTMLElement, desc: HTMLElement })
+		public readonly boundary: JQuery | null,
+	    public tags: { title: JQuery, desc: JQuery })
 	{
-		const titleTag = boundary && boundary.getElementsByTagName("title")[0];
-		this.title = titleTag && titleTag.innerHTML || "";
-
-		const descTag = boundary && boundary.getElementsByTagName("desc")[0];
-		this.desc = descTag && descTag.innerHTML || "";
 
 		if (boundary) {
+			this.title = boundary.find("title").text();
+			this.desc = boundary.find("desc").text();
 
-			boundary.onclick =
-			boundary.onmouseover =
-				() => this.setActive();
-
-			boundary.onmouseout =
-				() => {
-				if(selectedRoom==this)
-					nullRoom.setActive();
+			const handler = () => {
+				boundary.toggleClass('hover', true);
+				this.setActive();
 			};
+
+			boundary
+				.click(handler)
+				.mouseover(handler)
+				.mouseout(() => {
+					boundary.toggleClass('hover', false);
+					if(selectedRoom==this)
+						nullRoom.setActive();
+				});
 		}
+
+		this.title = this.title || "";
+		this.desc = this.desc || "";
+
 	}
 
 }
