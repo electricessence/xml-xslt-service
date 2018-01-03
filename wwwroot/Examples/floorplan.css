@@ -36,10 +36,10 @@ svg,
 .floor-plan svg g {
   pointer-events: none;
 }
-.floor-plan svg g .label-layer {
+.floor-plan svg g.label-layer {
   display: none !important;
 }
-.labels .floor-plan svg g .label-layer {
+.labels .floor-plan svg g.label-layer {
   display: inline !important;
 }
 .floor-plan svg g#labels {
